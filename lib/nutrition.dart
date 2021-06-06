@@ -19,14 +19,14 @@ class NutritionData {
 }
 
 // Google App Script Web URL.
-const String URL =
+const String url =
     "https://script.google.com/macros/s/AKfycbx3niQdDqiqC4U9R8HqgjhJAAjqECe00Tcg7F8Ju-N1bu6jJbMAmxaQJDfvhKPDht9j/exec";
 
 // Success Status Message
 const STATUS_SUCCESS = "SUCCESS";
 
 Future<List<NutritionData>> getNutritionData() async {
-  return await http.get(URL).then((response) {
+  return await http.get(Uri.parse(url)).then((response) {
     var jsonFeedback = convert.jsonDecode(response.body) as List;
     return jsonFeedback.map((json) => NutritionData.fromJson(json)).toList();
   });
