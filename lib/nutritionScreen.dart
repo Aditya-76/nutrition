@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nutrition/time.dart';
 import 'nutrition.dart';
 
 class NutritionScreen extends StatefulWidget {
@@ -14,12 +15,17 @@ class _NutritionScreenState extends State {
   @override
   void initState() {
     super.initState();
+    getData();
+  }
 
-    getNutritionData().then((items) {
-      setState(() {
-        this.items = items;
-      });
+  void getData() async {
+    items = await getNutritionData();
+    getTimeInfo();
+    getIndices(items);
+    setState(() {
+      this.items = items;
     });
+  }
   }
 
   @override
@@ -36,14 +42,14 @@ class _NutritionScreenState extends State {
               children: <Widget>[
                 Icon(Icons.fastfood),
                 Expanded(
-                  child: Text("  ${items[index].dish}"),
+                  child: Text("  ${items[index].monday}"),
                 )
               ],
             ),
             subtitle: Row(
               children: <Widget>[
                 Expanded(
-                  child: Text("         ${items[index].calories}"),
+                  child: Text("         ${items[index].mondayCalories}"),
                 )
               ],
             ),
