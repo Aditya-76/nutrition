@@ -39,10 +39,10 @@ class _NutritionScreenState extends State {
 
 Widget getTextWidgets(List<NutritionData> data) {
   DateTime date = DateTime.now();
-  //int day = date.weekday;
-  int day = 2;
-  // int hour = date.hour;
-  int hour = 10;
+  int day = date.weekday;
+  //int day = 2;
+  int hour = date.hour;
+  //int hour = 10;
   List<Widget> list = [];
 
   if (day == 1) {
